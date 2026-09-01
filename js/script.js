@@ -5,6 +5,22 @@
         // --- PROJECT DATA ---
         const projectData = [
             {
+                title: "HeapVortex",
+                subtitle: "Java | Spring Boot | JVM | JMX | Eclipse MAT",
+                description: `
+                    <p>A full-stack JVM diagnostic application designed to orchestrate automated heap dump analysis and serve data for 15,000+ memory objects via RESTful APIs[cite: 2].</p>
+                    <p>This system replaces manual monitoring by extracting live memory metrics and parsing multi-gigabyte binary files to accelerate memory leak detection[cite: 2].</p>
+                `,
+                features: [
+                    "Integrated secure JMX telemetry over SSL/TLS for encrypted extraction of live memory metrics[cite: 2]",
+                    "Engineered a headless Eclipse MAT integration to parse multi-gigabyte .hprof binary files[cite: 2]",
+                    "Utilized algorithmic sorting to extract the heaviest memory footprints[cite: 2]",
+                    "Containerized the backend infrastructure using Docker with dynamic volume mapping[cite: 2]",
+                    "Achieved 1-click cross-platform deployments, eliminating OS-level file pathing discrepancies[cite: 2]"
+                ],
+                github: "https://github.com/vhatkarsameer/heapvortex-java-fullstack"
+            },
+            {
                 title: "E-commerce Microservices Backend",
                 subtitle: "Java | Spring Boot | MySQL",
                 description: `
@@ -20,7 +36,7 @@
                     "Microservices Communication",
                     "MySQL Database Integration"
                 ],
-                github: "https://github.com/sameervhatkar" // Main profile as fallback
+                github: "https://github.com/sameervhatkar/EcommerceProductService" // Main profile as fallback
             },
             {
                 title: "BookMyShow Backend",
@@ -38,7 +54,7 @@
                     "User account handling",
                     "Payment simulation"
                 ],
-                github: "https://github.com/sameervhatkar"
+                github: "https://github.com/sameervhatkar/MovieBookingSystem"
             },
             {
                 title: "Fake Store API Integration",
@@ -54,7 +70,7 @@
                     "Clean controller-service design",
                     "JSON Response Parsing"
                 ],
-                github: "https://github.com/sameervhatkar"
+                github: "https://github.com/sameervhatkar/fakestore"
             }
         ];
 
