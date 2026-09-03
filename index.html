@@ -1,758 +1,1408 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sameer Vhatkar | Portfolio</title>
     <!-- Primary Meta Tags -->
-    <meta name="description" content="Portfolio of Sameer Vhatkar, Computer Science Tutor and Software Developer.">
-    <meta name="keywords" content="Sameer Vhatkar, Software Developer, Java, Spring Boot, DSA, Portfolio">
+    <meta
+      name="description"
+      content="Portfolio of Sameer Vhatkar, Computer Science Tutor and Software Developer."
+    />
+    <meta
+      name="keywords"
+      content="Sameer Vhatkar, Software Developer, Java, Spring Boot, DSA, Portfolio"
+    />
 
     <!-- Open Graph / LinkedIn / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sameervhatkar.com/">
-    <meta property="og:title" content="Sameer Vhatkar | System Archives">
-    <meta property="og:description" content="Explore my backend systems, microservices, and DSA tutorials.">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sameervhatkar.com/" />
+    <meta property="og:title" content="Sameer Vhatkar | System Archives" />
+    <meta
+      property="og:description"
+      content="Explore my backend systems, microservices, and DSA tutorials."
+    />
     <!-- You will need to take a screenshot of your site, save it as preview.jpg in your assets folder, and upload it -->
-    <meta property="og:image" content="https://sameervhatkar.com/assets/preview.jpg">
+    <meta
+      property="og:image"
+      content="https://sameervhatkar.com/assets/preview.jpg"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Rubik+Glitch&family=VT323&display=swap" rel="stylesheet">
-    <link rel = "stylesheet" href = "css/output.css">
-</head>
-<body class="selection:bg-red-900 selection:text-white">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- Dynamic Retro SV Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='black'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='55' font-family='monospace' font-weight='bold' fill='%23dc2626'>SV</text></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Rubik+Glitch&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/output.css" />
+  </head>
+  <body class="selection:bg-red-900 selection:text-white">
     <!-- Effects Layers -->
     <div class="crt-overlay"></div>
     <div class="vignette"></div>
     <canvas id="spores"></canvas>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-sm border-b border-red-900/30">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl tracking-widest text-red-600 font-bold stranger-font flicker-slow cursor-pointer" onclick="showView('home')">SV</div>
-            <div class="hidden md:flex space-x-8 text-lg items-center">
-                <button onclick="showView('home')" class="hover:text-red-500 transition-colors uppercase">Home</button>
-                <button onclick="showView('projects')" class="hover:text-red-500 transition-colors uppercase">System Archives</button>
-                <button onclick="showView('youtube')" class="hover:text-red-500 transition-colors uppercase">AlgoXploration</button>
-                <a href="./assets/Sameer_Vhatkar_Resume.pdf" target="_blank" class="hover:text-red-500 transition-colors uppercase">Resume</a>
-                <button onclick="showContact()" class="hover:text-red-500 transition-colors uppercase">Contact</button>
-            </div>
+    <!--Navigation-->
+    <nav
+      class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-sm border-b border-red-900/30"
+    >
+      <!-- Swapped max-w-7xl for w-full, added md:px-12 for edge breathing room -->
+      <div class="w-full px-6 md:px-12 py-4 flex justify-between items-center">
+        <div
+          class="text-2xl tracking-widest text-red-600 font-bold stranger-font flicker-slow cursor-pointer"
+          onclick="showView('home')"
+        >
+          SV
         </div>
+        <div class="hidden md:flex space-x-8 text-lg items-center">
+          <button
+            onclick="showView('home')"
+            class="hover:text-red-500 transition-colors uppercase"
+          >
+            Home
+          </button>
+          <button
+            onclick="showView('projects')"
+            class="hover:text-red-500 transition-colors uppercase"
+          >
+            System Archives
+          </button>
+          <button
+            onclick="showView('youtube')"
+            class="hover:text-red-500 transition-colors uppercase"
+          >
+            AlgoXploration
+          </button>
+          <a
+            href="./assets/Sameer_Vhatkar_Resume.pdf"
+            target="_blank"
+            class="hover:text-red-500 transition-colors uppercase"
+            >Resume</a
+          >
+          <button
+            onclick="showContact()"
+            class="hover:text-red-500 transition-colors uppercase"
+          >
+            Contact
+          </button>
+        </div>
+      </div>
     </nav>
 
     <!-- === VIEW: HOME === -->
     <div id="view-home" class="page-view active">
-        
-        <!-- Hero Section -->
-        <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10">
-            <div class="relative">
-                
-                <!-- LAYOUT: 
-                     [S + Line]  [TopLine + AMEE]  [R + Line] 
-                                   VHATKAR 
-                -->
-                <div class="st-logo-container">
-                    <div class="st-top-row">
-                        <!-- Left Group -->
-                        <div class="st-side-group">
-                            <div class="st-bookend">S</div>
-                            <div class="st-bar-side"></div>
-                        </div>
-                        
-                        <!-- Middle Group -->
-                        <div class="st-stack-top">
-                            <div class="st-bar-top"></div>
-                            <h1 class="st-amee">AMEE</h1>
-                        </div>
-                        
-                        <!-- Right Group -->
-                        <div class="st-side-group">
-                            <div class="st-bookend">R</div>
-                            <div class="st-bar-side"></div>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Text -->
-                    <h2 class="st-vhatkar">VHATKAR</h2>
-                </div>
-
+      <!-- Hero Section -->
+      <header
+        class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10"
+      >
+        <!-- Added md:scale-110 lg:scale-125 to enlarge the custom title on desktop -->
+        <div
+          class="relative transform md:scale-110 lg:scale-125 mt-10 md:mt-16 transition-transform"
+        >
+          <div class="st-logo-container">
+            <div class="st-top-row">
+              <div class="st-side-group">
+                <div class="st-bookend">S</div>
+                <div class="st-bar-side"></div>
+              </div>
+              <div class="st-stack-top">
+                <div class="st-bar-top"></div>
+                <h1 class="st-amee">AMEE</h1>
+              </div>
+              <div class="st-side-group">
+                <div class="st-bookend">R</div>
+                <div class="st-bar-side"></div>
+              </div>
             </div>
-            
-            <p class="text-xl md:text-2xl text-gray-300 max-w-2xl font-light tracking-wider relative z-10 mt-8">
-                COMPUTER SCIENCE TUTOR | YOUTUBER | SOFTWARE DEVELOPER
+            <h2 class="st-vhatkar">VHATKAR</h2>
+          </div>
+        </div>
+
+        <!-- Increased desktop text size (lg:text-3xl) and expanded max-width (lg:max-w-4xl) -->
+        <p
+          class="text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-2xl lg:max-w-4xl font-light tracking-wider relative z-10 mt-12 lg:mt-20"
+        >
+          COMPUTER SCIENCE TUTOR | YOUTUBER | SOFTWARE DEVELOPER
+        </p>
+
+        <!-- Increased spacing and scaled up the buttons for desktop (lg:px-10 lg:py-4 lg:text-lg) -->
+        <div
+          class="mt-12 lg:mt-16 flex flex-wrap justify-center gap-6 relative z-10"
+        >
+          <button
+            onclick="showView('projects')"
+            class="px-8 py-3 lg:px-10 lg:py-4 lg:text-lg border border-red-600 text-red-500 hover:bg-red-600 hover:text-black transition-all duration-300 shadow-[0_0_10px_#ff0033_inset] bg-black/50"
+          >
+            VIEW PROJECTS
+          </button>
+
+          <a
+            href="./assets/Sameer_Vhatkar_Resume.pdf"
+            target="_blank"
+            class="px-8 py-3 lg:px-10 lg:py-4 lg:text-lg border border-red-600 text-red-500 hover:bg-red-600 hover:text-black transition-all duration-300 shadow-[0_0_10px_#ff0033_inset] bg-black/50 flex items-center"
+          >
+            ACCESS DATA LOG (RESUME)
+            <i data-lucide="download" class="w-5 h-5 lg:w-6 lg:h-6 ml-2"></i>
+          </a>
+
+          <!-- Fixed border to match the others -->
+          <button
+            onclick="showContact()"
+            class="px-8 py-3 lg:px-10 lg:py-4 lg:text-lg border border-red-600 text-red-500 hover:bg-red-600 hover:text-black transition-all duration-300 shadow-[0_0_10px_#ff0033_inset] bg-black/50"
+          >
+            CONTACT ME
+          </button>
+        </div>
+
+        <div
+          class="absolute bottom-10 animate-bounce text-red-500 opacity-70 cursor-pointer z-10"
+          onclick="
+            document
+              .getElementById('about')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+        >
+          <i data-lucide="chevrons-down" class="w-8 h-8"></i>
+        </div>
+      </header>
+
+      <!-- About Section -->
+      <section id="about" class="py-20 max-w-4xl mx-auto px-6 relative z-10">
+        <div
+          class="border-l-4 border-red-600 pl-6 bg-gray-900/80 p-8 rounded-r-lg card-retro cursor-default backdrop-blur-md"
+        >
+          <h2 class="text-4xl stranger-font text-red-500 mb-6">01. THE FILE</h2>
+          <div class="text-xl leading-relaxed space-y-4">
+            <p>
+              My name is
+              <span class="text-red-400 font-bold">Sameer Vhatkar</span>.
             </p>
-            <div class="mt-12 flex flex-wrap justify-center gap-6 relative z-10">
-                <button onclick="showView('projects')" class="px-8 py-3 border border-red-600 text-red-500 hover:bg-red-600 hover:text-black transition-all duration-300 shadow-[0_0_10px_#ff0033_inset] bg-black/50">
-                    VIEW PROJECTS
-                </button>
-                
-                <a href="./assets/Sameer_Vhatkar_Resume.pdf" target="_blank" class="px-8 py-3 border border-red-600 text-red-500 hover:bg-red-600 hover:text-black transition-all duration-300 shadow-[0_0_10px_#ff0033_inset] bg-black/50 flex items-center">
-                    ACCESS DATA LOG (RESUME) <i data-lucide="download" class="w-5 h-5 ml-2"></i>
-                </a>
+            <p>
+              I graduated in 2019 with a degree in Computer Science Engineering.
+              I am a Computer Science Tutor, YouTuber, and an Software
+              Developer.
+            </p>
 
-                <button onclick="showContact()" class="px-8 py-3 bg-red-900/20 text-gray-300 hover:bg-red-900/40 transition-all duration-300 border border-transparent hover:border-red-900">
-                    CONTACT ME
-                </button>
+            <div class="mt-6">
+              <h3
+                class="text-2xl text-red-400 mb-2 border-b border-red-900/50 inline-block"
+              >
+                CORE COMPETENCIES
+              </h3>
+              <ul
+                class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-3 text-gray-300"
+              >
+                <li class="flex items-center">
+                  <span class="text-red-600 mr-2">></span> Data Structures &
+                  Algorithms (DSA)
+                </li>
+                <li class="flex items-center">
+                  <span class="text-red-600 mr-2">></span> Theory of Computation
+                </li>
+                <li class="flex items-center">
+                  <span class="text-red-600 mr-2">></span> Compiler Design
+                </li>
+                <li class="flex items-center">
+                  <span class="text-red-600 mr-2">></span> Operating Systems
+                </li>
+                <li class="flex items-center">
+                  <span class="text-red-600 mr-2">></span> Digital Logic
+                </li>
+                <li class="flex items-center">
+                  <span class="text-red-600 mr-2">></span> Computer Networks
+                </li>
+                <li class="flex items-center">
+                  <span class="text-red-600 mr-2">></span> C / C++
+                </li>
+                <li class="flex items-center">
+                  <span class="text-red-600 mr-2">></span> Java & Python
+                </li>
+              </ul>
             </div>
-                        
-            <div class="absolute bottom-10 animate-bounce text-red-500 opacity-70 cursor-pointer z-10" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
-                <i data-lucide="chevrons-down" class="w-8 h-8"></i>
-            </div>
-        </header>
 
-        <!-- About Section -->
-        <section id="about" class="py-20 max-w-4xl mx-auto px-6 relative z-10">
-            <div class="border-l-4 border-red-600 pl-6 bg-gray-900/80 p-8 rounded-r-lg card-retro cursor-default backdrop-blur-md">
-                <h2 class="text-4xl stranger-font text-red-500 mb-6">01. THE FILE</h2>
-                <div class="text-xl leading-relaxed space-y-4">
-                    <p>My name is <span class="text-red-400 font-bold">Sameer Vhatkar</span>.</p>
-                    <p>I graduated in 2019 with a degree in Computer Science Engineering. I am a Computer Science Tutor, YouTuber, and an Software Developer.</p>
-                    
-                    <div class="mt-6">
-                        <h3 class="text-2xl text-red-400 mb-2 border-b border-red-900/50 inline-block">CORE COMPETENCIES</h3>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-3 text-gray-300">
-                            <li class="flex items-center"><span class="text-red-600 mr-2">></span> Data Structures & Algorithms (DSA)</li>
-                            <li class="flex items-center"><span class="text-red-600 mr-2">></span> Theory of Computation</li>
-                            <li class="flex items-center"><span class="text-red-600 mr-2">></span> Compiler Design</li>
-                            <li class="flex items-center"><span class="text-red-600 mr-2">></span> Operating Systems</li>
-                            <li class="flex items-center"><span class="text-red-600 mr-2">></span> Digital Logic</li>
-                            <li class="flex items-center"><span class="text-red-600 mr-2">></span> Computer Networks</li>
-                            <li class="flex items-center"><span class="text-red-600 mr-2">></span> C / C++</li>
-                            <li class="flex items-center"><span class="text-red-600 mr-2">></span> Java & Python</li>
-                        </ul>
-                    </div>
-                    
-                    <p class="mt-6 border-t border-red-900/30 pt-4">
-                    I run a Computer Science-focused YouTube channel: <span class="text-red-400 cursor-pointer hover:underline" onclick="showView('youtube')">AlgoXploration</span>.
-                    I am highly passionate about teaching core CS concepts, solving complex problems, and building real-world scalable backend systems.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-<!-- Timeline Section -->
-<section id="timeline" class="py-20 bg-black/50 relative overflow-hidden z-10">
-    <h2 class="text-4xl stranger-font text-center text-red-500 mb-16 glow-text-filled">TIMELINE</h2>
-    
-    <!-- ========================================== -->
-    <!-- DESKTOP VIEW (3 Columns | Large Screens)   -->
-    <!-- ========================================== -->
-    <div class="hidden xl:block w-full max-w-7xl mx-auto px-8 relative mt-12">
-        
-        <!-- ROW 1 (L->R, Right U-Turn) -->
-        <div class="w-full relative pb-24 px-12">
-            <div class="absolute top-0 left-0 right-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"></div>
-            <div class="absolute top-0 bottom-0 right-0 w-[3rem] border-t-4 border-r-4 border-b-4 border-red-600 rounded-r-[3rem] shadow-[10px_0_15px_-5px_rgba(255,0,51,0.2)]"></div>
-            <div class="absolute bottom-0 right-[3rem] left-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"></div>
-            
-            <div class="flex justify-between w-full relative z-10">
-                <!-- 2019 -->
-                <div class="w-[30%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2019</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p>Graduated with a degree in Computer Science Engineering in February.</p>
-                        <p class="text-gray-400 mt-2">Joined Innovalence as an SME for 15-20 days, but dropped it because I was not happy with the work.</p>
-                        <p class="text-red-300 mt-2">Started preparing for GATE 2020.</p>
-                    </div>
-                </div>
-                <!-- 2020 -->
-                <div class="w-[30%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2020</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p>Prepared for a full year for GATE 2020, but did not qualify.</p>
-                    </div>
-                </div>
-                <!-- 2021 -->
-                <div class="w-[30%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2021</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p>Prepared during the COVID lockdown for GATE 2021, but was not able to crack it.</p>
-                        <p class="text-red-300 mt-2">Joined Course Hero in November 2021 as a Subject Matter Expert (SME).</p>
-                        <p class="text-gray-400 mt-2">Started preparing for GATE 2022.</p>
-                    </div>
-                </div>
-            </div>
+            <p class="mt-6 border-t border-red-900/30 pt-4">
+              I run a Computer Science-focused YouTube channel:
+              <span
+                class="text-red-400 cursor-pointer hover:underline"
+                onclick="showView('youtube')"
+                >AlgoXploration</span
+              >. I am highly passionate about teaching core CS concepts, solving
+              complex problems, and building real-world scalable backend
+              systems.
+            </p>
+          </div>
         </div>
-        
-        <!-- ROW 2 (R->L, Left U-Turn) -->
-        <div class="w-full relative pb-24 px-12 mt-[-4px]">
-            <div class="absolute top-0 bottom-0 left-0 w-[3rem] border-t-4 border-l-4 border-b-4 border-red-600 rounded-l-[3rem] shadow-[-10px_0_15px_-5px_rgba(255,0,51,0.2)]"></div>
-            
+      </section>
+
+      <!-- Timeline Section -->
+      <section
+        id="timeline"
+        class="py-20 bg-black/50 relative overflow-hidden z-10"
+      >
+        <h2
+          class="text-4xl stranger-font text-center text-red-500 mb-16 glow-text-filled"
+        >
+          TIMELINE
+        </h2>
+
+        <!-- ========================================== -->
+        <!-- DESKTOP VIEW (3 Columns | Large Screens)   -->
+        <!-- ========================================== -->
+        <div
+          class="hidden xl:block w-full max-w-7xl mx-auto px-8 relative mt-12"
+        >
+          <!-- ROW 1 (L->R, Right U-Turn) -->
+          <div class="w-full relative pb-24 px-12">
+            <div
+              class="absolute top-0 left-0 right-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"
+            ></div>
+            <div
+              class="absolute top-0 bottom-0 right-0 w-[3rem] border-t-4 border-r-4 border-b-4 border-red-600 rounded-r-[3rem] shadow-[10px_0_15px_-5px_rgba(255,0,51,0.2)]"
+            ></div>
+            <div
+              class="absolute bottom-0 right-[3rem] left-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"
+            ></div>
+
+            <div class="flex justify-between w-full relative z-10">
+              <!-- 2019 -->
+              <div class="w-[30%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2019
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p>
+                    Graduated with a degree in Computer Science Engineering in
+                    February.
+                  </p>
+                  <p class="text-gray-400 mt-2">
+                    Joined Innovalence as an SME for 15-20 days, but dropped it
+                    because I was not happy with the work.
+                  </p>
+                  <p class="text-red-300 mt-2">
+                    Started preparing for GATE 2020.
+                  </p>
+                </div>
+              </div>
+              <!-- 2020 -->
+              <div class="w-[30%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2020
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p>
+                    Prepared for a full year for GATE 2020, but did not qualify.
+                  </p>
+                </div>
+              </div>
+              <!-- 2021 -->
+              <div class="w-[30%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2021
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p>
+                    Prepared during the COVID lockdown for GATE 2021, but was
+                    not able to crack it.
+                  </p>
+                  <p class="text-red-300 mt-2">
+                    Joined Course Hero in November 2021 as a Subject Matter
+                    Expert (SME).
+                  </p>
+                  <p class="text-gray-400 mt-2">
+                    Started preparing for GATE 2022.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROW 2 (R->L, Left U-Turn) -->
+          <div class="w-full relative pb-24 px-12 mt-[-4px]">
+            <div
+              class="absolute top-0 bottom-0 left-0 w-[3rem] border-t-4 border-l-4 border-b-4 border-red-600 rounded-l-[3rem] shadow-[-10px_0_15px_-5px_rgba(255,0,51,0.2)]"
+            ></div>
+
             <!-- FADE OUT SWEEP: Solid up to 2026, then fades to transparent on the right -->
-            <div class="absolute bottom-0 left-[3rem] right-[3rem] h-[4px] shadow-[0_0_10px_#ff0033]" style="background: linear-gradient(to right, #dc2626 70%, transparent 100%);"></div>
-            
-            <div class="flex justify-between flex-row-reverse w-full relative z-10">
-                <!-- 2022 -->
-                <div class="w-[30%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2022</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p class="text-green-400">Qualified GATE 2022, but the rank was not good.</p>
-                        <p class="text-gray-400 mt-2">Continued working as an SME at Course Hero while preparing for GATE for the last time.</p>
-                    </div>
+            <div
+              class="absolute bottom-0 left-[3rem] right-[3rem] h-[4px] shadow-[0_0_10px_#ff0033]"
+              style="
+                background: linear-gradient(
+                  to right,
+                  #dc2626 70%,
+                  transparent 100%
+                );
+              "
+            ></div>
+
+            <div
+              class="flex justify-between flex-row-reverse w-full relative z-10"
+            >
+              <!-- 2022 -->
+              <div class="w-[30%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2022
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p class="text-green-400">
+                    Qualified GATE 2022, but the rank was not good.
+                  </p>
+                  <p class="text-gray-400 mt-2">
+                    Continued working as an SME at Course Hero while preparing
+                    for GATE for the last time.
+                  </p>
                 </div>
-                <!-- 2023 -->
-                <div class="w-[30%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2023</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p class="text-green-400">Qualified GATE 2023. Finally dropped the plan for an MTech in IITs.</p>
-                        <p class="text-gray-400 mt-2">Fired from Course Hero in September 2023 due to a strict 3-strike policy.</p>
-                        <p class="text-red-300 mt-2">Joined UrbanPro in October 2023 and remain with them currently as a freelance tutor.</p>
-                    </div>
+              </div>
+              <!-- 2023 -->
+              <div class="w-[30%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2023
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p class="text-green-400">
+                    Qualified GATE 2023. Finally dropped the plan for an MTech
+                    in IITs.
+                  </p>
+                  <p class="text-gray-400 mt-2">
+                    Fired from Course Hero in September 2023 due to a strict
+                    3-strike policy.
+                  </p>
+                  <p class="text-red-300 mt-2">
+                    Joined UrbanPro in October 2023 and remain with them
+                    currently as a freelance tutor.
+                  </p>
                 </div>
-                <!-- 2024 -->
-                <div class="w-[30%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2024</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p class="text-red-300">Joined eClerx as a Support Analyst in December 2024.</p>
-                        <p class="text-gray-400 mt-2">Continued working simultaneously as a freelance tutor with UrbanPro.</p>
-                    </div>
+              </div>
+              <!-- 2024 -->
+              <div class="w-[30%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2024
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p class="text-red-300">
+                    Joined eClerx as a Support Analyst in December 2024.
+                  </p>
+                  <p class="text-gray-400 mt-2">
+                    Continued working simultaneously as a freelance tutor with
+                    UrbanPro.
+                  </p>
                 </div>
+              </div>
             </div>
-        </div>
-        
-        <!-- ROW 3 (L->R, Final) -->
-        <div class="w-full relative pb-20 px-12 mt-[-4px]">
+          </div>
+
+          <!-- ROW 3 (L->R, Final) -->
+          <div class="w-full relative pb-20 px-12 mt-[-4px]">
             <div class="flex justify-start gap-[5%] w-full relative z-10">
-                <!-- 2025 -->
-                <div class="w-[30%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2025</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p>Resigned from eClerx in September 2025.</p>
-                        <p class="text-gray-400 mt-2">Continued working with UrbanPro.</p>
-                    </div>
+              <!-- 2025 -->
+              <div class="w-[30%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2025
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p>Resigned from eClerx in September 2025.</p>
+                  <p class="text-gray-400 mt-2">
+                    Continued working with UrbanPro.
+                  </p>
                 </div>
-                <!-- 2026 -->
-                <div class="w-[30%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-red-600 border-4 border-red-600 rounded-full z-20 animate-pulse shadow-[0_0_20px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2026</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full border border-red-500">
-                        <p class="text-green-400 font-bold">Joined Infotact as a Java Developer Intern in August 2026.</p>
-                        <p class="mt-2">Still actively tutoring as a freelancer on UrbanPro while building my development career.</p>
-                    </div>
+              </div>
+              <!-- 2026 -->
+              <div class="w-[30%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-red-600 border-4 border-red-600 rounded-full z-20 animate-pulse shadow-[0_0_20px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2026
+                </h3>
+                <div
+                  class="card-retro p-5 text-[19px] leading-relaxed h-full border border-red-500"
+                >
+                  <p class="text-green-400 font-bold">
+                    Joined Infotact as a Java Developer Intern in August 2026.
+                  </p>
+                  <p class="mt-2">
+                    Still actively tutoring as a freelancer on UrbanPro while
+                    building my development career.
+                  </p>
                 </div>
-                <!-- Future Sweep Message -->
-                <div class="w-[30%] relative mt-12 flex items-start pt-4">
-                    <div class="text-red-800 font-mono tracking-widest text-sm animate-pulse">
-                        [ STATUS: STILL LIVING ]<br>
-                        > WORK IN PROGRESS FOR NEXT STUFF_
-                    </div>
+              </div>
+              <!-- Future Sweep Message -->
+              <div class="w-[30%] relative mt-12 flex items-start pt-4">
+                <div
+                  class="text-red-800 font-mono tracking-widest text-sm animate-pulse"
+                >
+                  [ STATUS: STILL LIVING ]<br />
+                  > WORK IN PROGRESS FOR NEXT STUFF_
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
 
-    <!-- ========================================== -->
-    <!-- TABLET VIEW (2 Columns | iPads/Medium)     -->
-    <!-- ========================================== -->
-    <div class="hidden md:block xl:hidden w-full max-w-4xl mx-auto px-8 relative mt-12">
-        
-        <!-- ROW 1 (L->R, Right U-Turn) -->
-        <div class="w-full relative pb-24 px-12">
-            <div class="absolute top-0 left-0 right-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"></div>
-            <div class="absolute top-0 bottom-0 right-0 w-[3rem] border-t-4 border-r-4 border-b-4 border-red-600 rounded-r-[3rem] shadow-[10px_0_15px_-5px_rgba(255,0,51,0.2)]"></div>
-            <div class="absolute bottom-0 right-[3rem] left-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"></div>
-            
+        <!-- ========================================== -->
+        <!-- TABLET VIEW (2 Columns | iPads/Medium)     -->
+        <!-- ========================================== -->
+        <div
+          class="hidden md:block xl:hidden w-full max-w-4xl mx-auto px-8 relative mt-12"
+        >
+          <!-- ROW 1 (L->R, Right U-Turn) -->
+          <div class="w-full relative pb-24 px-12">
+            <div
+              class="absolute top-0 left-0 right-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"
+            ></div>
+            <div
+              class="absolute top-0 bottom-0 right-0 w-[3rem] border-t-4 border-r-4 border-b-4 border-red-600 rounded-r-[3rem] shadow-[10px_0_15px_-5px_rgba(255,0,51,0.2)]"
+            ></div>
+            <div
+              class="absolute bottom-0 right-[3rem] left-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"
+            ></div>
+
             <div class="flex justify-between w-full relative z-10">
-                <!-- 2019 -->
-                <div class="w-[45%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2019</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p>Graduated with a degree in Computer Science Engineering in February.</p>
-                        <p class="text-gray-400 mt-2">Joined Innovalence as an SME for 15-20 days, but dropped it because I was not happy with the work.</p>
-                        <p class="text-red-300 mt-2">Started preparing for GATE 2020.</p>
-                    </div>
+              <!-- 2019 -->
+              <div class="w-[45%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2019
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p>
+                    Graduated with a degree in Computer Science Engineering in
+                    February.
+                  </p>
+                  <p class="text-gray-400 mt-2">
+                    Joined Innovalence as an SME for 15-20 days, but dropped it
+                    because I was not happy with the work.
+                  </p>
+                  <p class="text-red-300 mt-2">
+                    Started preparing for GATE 2020.
+                  </p>
                 </div>
-                <!-- 2020 -->
-                <div class="w-[45%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2020</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p>Prepared for a full year for GATE 2020, but did not qualify.</p>
-                    </div>
+              </div>
+              <!-- 2020 -->
+              <div class="w-[45%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2020
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p>
+                    Prepared for a full year for GATE 2020, but did not qualify.
+                  </p>
                 </div>
+              </div>
             </div>
-        </div>
-        
-        <!-- ROW 2 (R->L, Left U-Turn) -->
-        <div class="w-full relative pb-24 px-12 mt-[-4px]">
-            <div class="absolute top-0 bottom-0 left-0 w-[3rem] border-t-4 border-l-4 border-b-4 border-red-600 rounded-l-[3rem] shadow-[-10px_0_15px_-5px_rgba(255,0,51,0.2)]"></div>
-            <div class="absolute bottom-0 left-[3rem] right-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"></div>
-            
-            <div class="flex justify-between flex-row-reverse w-full relative z-10">
-                <!-- 2021 -->
-                <div class="w-[45%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2021</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p>Prepared during the COVID lockdown for GATE 2021, but was not able to crack it.</p>
-                        <p class="text-red-300 mt-2">Joined Course Hero in November 2021 as a Subject Matter Expert (SME).</p>
-                        <p class="text-gray-400 mt-2">Started preparing for GATE 2022.</p>
-                    </div>
+          </div>
+
+          <!-- ROW 2 (R->L, Left U-Turn) -->
+          <div class="w-full relative pb-24 px-12 mt-[-4px]">
+            <div
+              class="absolute top-0 bottom-0 left-0 w-[3rem] border-t-4 border-l-4 border-b-4 border-red-600 rounded-l-[3rem] shadow-[-10px_0_15px_-5px_rgba(255,0,51,0.2)]"
+            ></div>
+            <div
+              class="absolute bottom-0 left-[3rem] right-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"
+            ></div>
+
+            <div
+              class="flex justify-between flex-row-reverse w-full relative z-10"
+            >
+              <!-- 2021 -->
+              <div class="w-[45%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2021
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p>
+                    Prepared during the COVID lockdown for GATE 2021, but was
+                    not able to crack it.
+                  </p>
+                  <p class="text-red-300 mt-2">
+                    Joined Course Hero in November 2021 as a Subject Matter
+                    Expert (SME).
+                  </p>
+                  <p class="text-gray-400 mt-2">
+                    Started preparing for GATE 2022.
+                  </p>
                 </div>
-                <!-- 2022 -->
-                <div class="w-[45%] relative mt-12">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2022</h3>
-                    <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
-                        <p class="text-green-400">Qualified GATE 2022, but the rank was not good.</p>
-                        <p class="text-gray-400 mt-2">Continued working as an SME at Course Hero while preparing for GATE for the last time.</p>
-                    </div>
+              </div>
+              <!-- 2022 -->
+              <div class="w-[45%] relative mt-12">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2022
+                </h3>
+                <div class="card-retro p-5 text-[19px] leading-relaxed h-full">
+                  <p class="text-green-400">
+                    Qualified GATE 2022, but the rank was not good.
+                  </p>
+                  <p class="text-gray-400 mt-2">
+                    Continued working as an SME at Course Hero while preparing
+                    for GATE for the last time.
+                  </p>
                 </div>
+              </div>
             </div>
-        </div>
-        
-                <!-- ROW 3 (L->R, Right U-Turn) -->
-        <div class="w-full relative pb-24 px-12 mt-[-4px]">
-            <div class="absolute top-0 bottom-0 right-0 w-[3rem] border-t-4 border-r-4 border-b-4 border-red-600 rounded-r-[3rem] shadow-[10px_0_15px_-5px_rgba(255,0,51,0.2)]"></div>
+          </div>
+
+          <!-- ROW 3 (L->R, Right U-Turn) -->
+          <div class="w-full relative pb-24 px-12 mt-[-4px]">
+            <div
+              class="absolute top-0 bottom-0 right-0 w-[3rem] border-t-4 border-r-4 border-b-4 border-red-600 rounded-r-[3rem] shadow-[10px_0_15px_-5px_rgba(255,0,51,0.2)]"
+            ></div>
             <!-- Solid bottom track connects directly to Row 4 -->
-            <div class="absolute bottom-0 right-[3rem] left-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"></div>
-            
-            <div class="flex justify-between w-full relative z-10">
-                <!-- 2023 -->
-                <div class="w-[45%] relative mt-12 flex flex-col">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2023</h3>
-                    <div class="card-retro p-5 text-[15px] leading-relaxed flex-grow">
-                        <p class="text-green-400 font-bold">Qualified GATE 2023. Finally dropped the plan for an MTech in IITs.</p>
-                        <p class="text-gray-400 mt-2">Fired from Course Hero in September 2023 due to a strict 3-strike policy.</p>
-                        <p class="text-red-300 mt-2">Joined UrbanPro in October 2023 and remain with them currently as a freelance tutor.</p>
-                    </div>
-                </div>
-                <!-- 2024 -->
-                <div class="w-[45%] relative mt-12 flex flex-col">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2024</h3>
-                    <div class="card-retro p-5 text-[15px] leading-relaxed flex-grow">
-                        <p class="text-red-300">Joined eClerx as a Support Analyst in December 2024.</p>
-                        <p class="text-gray-400 mt-2">Continued working simultaneously as a freelance tutor with UrbanPro.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- ROW 4 (R->L, Ends) -->
-        <div class="w-full relative pb-28 px-12 mt-[-4px]">
-            <!-- Left curve and bottom fading track -->
-            <div class="absolute top-0 bottom-0 left-0 w-[3rem] border-t-4 border-l-4 border-b-4 border-red-600 rounded-l-[3rem] shadow-[-10px_0_15px_-5px_rgba(255,0,51,0.2)]"></div>
-            <div class="absolute bottom-0 left-[3rem] right-[3rem] h-[4px] shadow-[0_0_10px_#ff0033]" style="background: linear-gradient(to right, #dc2626 40%, transparent 100%);"></div>
+            <div
+              class="absolute bottom-0 right-[3rem] left-[3rem] h-[4px] bg-red-600 shadow-[0_0_10px_#ff0033]"
+            ></div>
 
-            <div class="flex justify-between flex-row-reverse w-full relative z-10">
-                <!-- 2025 -->
-                <div class="w-[45%] relative mt-12 flex flex-col">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2025</h3>
-                    <div class="card-retro p-5 text-[15px] leading-relaxed flex-grow">
-                        <p>Resigned from eClerx in September 2025.</p>
-                        <p class="text-gray-400 mt-2">Continued working with UrbanPro.</p>
-                    </div>
+            <div class="flex justify-between w-full relative z-10">
+              <!-- 2023 -->
+              <div class="w-[45%] relative mt-12 flex flex-col">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2023
+                </h3>
+                <div
+                  class="card-retro p-5 text-[15px] leading-relaxed flex-grow"
+                >
+                  <p class="text-green-400 font-bold">
+                    Qualified GATE 2023. Finally dropped the plan for an MTech
+                    in IITs.
+                  </p>
+                  <p class="text-gray-400 mt-2">
+                    Fired from Course Hero in September 2023 due to a strict
+                    3-strike policy.
+                  </p>
+                  <p class="text-red-300 mt-2">
+                    Joined UrbanPro in October 2023 and remain with them
+                    currently as a freelance tutor.
+                  </p>
                 </div>
-                <!-- 2026 -->
-                <div class="w-[45%] relative mt-12 flex flex-col">
-                    <div class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-red-600 border-4 border-red-600 rounded-full z-20 animate-pulse shadow-[0_0_20px_#ff0033]"></div>
-                    <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">2026</h3>
-                    <div class="card-retro p-5 text-[15px] leading-relaxed flex-grow border border-red-500">
-                        <p class="text-green-400 font-bold">Joined Infotact as a Java Developer Intern in August 2026.</p>
-                        <p class="mt-2">Still actively tutoring as a freelancer on UrbanPro while building my development career.</p>
-                    </div>
+              </div>
+              <!-- 2024 -->
+              <div class="w-[45%] relative mt-12 flex flex-col">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2024
+                </h3>
+                <div
+                  class="card-retro p-5 text-[15px] leading-relaxed flex-grow"
+                >
+                  <p class="text-red-300">
+                    Joined eClerx as a Support Analyst in December 2024.
+                  </p>
+                  <p class="text-gray-400 mt-2">
+                    Continued working simultaneously as a freelance tutor with
+                    UrbanPro.
+                  </p>
                 </div>
+              </div>
             </div>
-            
+          </div>
+
+          <!-- ROW 4 (R->L, Ends) -->
+          <div class="w-full relative pb-28 px-12 mt-[-4px]">
+            <!-- Left curve and bottom fading track -->
+            <div
+              class="absolute top-0 bottom-0 left-0 w-[3rem] border-t-4 border-l-4 border-b-4 border-red-600 rounded-l-[3rem] shadow-[-10px_0_15px_-5px_rgba(255,0,51,0.2)]"
+            ></div>
+            <div
+              class="absolute bottom-0 left-[3rem] right-[3rem] h-[4px] shadow-[0_0_10px_#ff0033]"
+              style="
+                background: linear-gradient(
+                  to right,
+                  #dc2626 40%,
+                  transparent 100%
+                );
+              "
+            ></div>
+
+            <div
+              class="flex justify-between flex-row-reverse w-full relative z-10"
+            >
+              <!-- 2025 -->
+              <div class="w-[45%] relative mt-12 flex flex-col">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2025
+                </h3>
+                <div
+                  class="card-retro p-5 text-[15px] leading-relaxed flex-grow"
+                >
+                  <p>Resigned from eClerx in September 2025.</p>
+                  <p class="text-gray-400 mt-2">
+                    Continued working with UrbanPro.
+                  </p>
+                </div>
+              </div>
+              <!-- 2026 -->
+              <div class="w-[45%] relative mt-12 flex flex-col">
+                <div
+                  class="absolute top-[-46px] -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 h-5 bg-red-600 border-4 border-red-600 rounded-full z-20 animate-pulse shadow-[0_0_20px_#ff0033]"
+                ></div>
+                <h3 class="text-3xl text-red-500 font-bold mb-4 text-center">
+                  2026
+                </h3>
+                <div
+                  class="card-retro p-5 text-[15px] leading-relaxed flex-grow border border-red-500"
+                >
+                  <p class="text-green-400 font-bold">
+                    Joined Infotact as a Java Developer Intern in August 2026.
+                  </p>
+                  <p class="mt-2">
+                    Still actively tutoring as a freelancer on UrbanPro while
+                    building my development career.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <!-- Future Sweep Message - SAFELY SPACED IN ITS OWN BLOCK -->
             <div class="w-full relative z-10 pt-20 pl-4 flex items-start">
-                <div class="text-red-800 font-mono tracking-widest text-lg animate-pulse">
-                    [ STATUS: STILL LIVING ]<br>
-                    > WORK IN PROGRESS FOR NEXT STUFF_
-                </div>
+              <div
+                class="text-red-800 font-mono tracking-widest text-lg animate-pulse"
+              >
+                [ STATUS: STILL LIVING ]<br />
+                > WORK IN PROGRESS FOR NEXT STUFF_
+              </div>
             </div>
+          </div>
         </div>
-    </div>
 
-    <!-- ========================================== -->
-    <!-- MOBILE VIEW (1 Column | Phones)            -->
-    <!-- ========================================== -->
-    <div class="md:hidden max-w-2xl mx-auto px-4 relative mt-12">
-        <!-- FADE OUT SWEEP: Vertical Line fades at the bottom -->
-        <div class="absolute left-[34px] top-0 bottom-0 w-[4px] shadow-[0_0_10px_#ff0033]" style="background: linear-gradient(to bottom, #dc2626 90%, transparent 100%);"></div>
+        <!-- ========================================== -->
+        <!-- MOBILE VIEW (1 Column | Phones)            -->
+        <!-- ========================================== -->
+        <div class="md:hidden max-w-2xl mx-auto px-4 relative mt-12">
+          <!-- FADE OUT SWEEP: Vertical Line fades at the bottom -->
+          <div
+            class="absolute left-[34px] top-0 bottom-0 w-[4px] shadow-[0_0_10px_#ff0033]"
+            style="
+              background: linear-gradient(
+                to bottom,
+                #dc2626 90%,
+                transparent 100%
+              );
+            "
+          ></div>
 
-        <!-- 2019 -->
-        <div class="relative pl-24 mb-16">
-            <div class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
+          <!-- 2019 -->
+          <div class="relative pl-24 mb-16">
+            <div
+              class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+            ></div>
             <h3 class="text-3xl text-red-500 font-bold mb-2">2019</h3>
             <div class="card-retro p-5 text-[19px] leading-relaxed">
-                <p>Graduated with a degree in Computer Science Engineering in February.</p>
-                <p class="text-gray-400 mt-2">Joined Innovalence as an SME for 15-20 days, but dropped it because I was not happy with the work.</p>
-                <p class="text-red-300 mt-2">Started preparing for GATE 2020.</p>
+              <p>
+                Graduated with a degree in Computer Science Engineering in
+                February.
+              </p>
+              <p class="text-gray-400 mt-2">
+                Joined Innovalence as an SME for 15-20 days, but dropped it
+                because I was not happy with the work.
+              </p>
+              <p class="text-red-300 mt-2">Started preparing for GATE 2020.</p>
             </div>
-        </div>
+          </div>
 
-        <!-- 2020 -->
-        <div class="relative pl-24 mb-16">
-            <div class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
+          <!-- 2020 -->
+          <div class="relative pl-24 mb-16">
+            <div
+              class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+            ></div>
             <h3 class="text-3xl text-red-500 font-bold mb-2">2020</h3>
             <div class="card-retro p-5 text-[19px] leading-relaxed">
-                <p>Prepared for a full year for GATE 2020, but did not qualify.</p>
+              <p>
+                Prepared for a full year for GATE 2020, but did not qualify.
+              </p>
             </div>
-        </div>
+          </div>
 
-        <!-- 2021 -->
-        <div class="relative pl-24 mb-16">
-            <div class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
+          <!-- 2021 -->
+          <div class="relative pl-24 mb-16">
+            <div
+              class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+            ></div>
             <h3 class="text-3xl text-red-500 font-bold mb-2">2021</h3>
             <div class="card-retro p-5 text-[19px] leading-relaxed">
-                <p>Prepared during the COVID lockdown for GATE 2021, but was not able to crack it.</p>
-                <p class="text-red-300 mt-2">Joined Course Hero in November 2021 as a Subject Matter Expert (SME).</p>
-                <p class="text-gray-400 mt-2">Started preparing for GATE 2022.</p>
+              <p>
+                Prepared during the COVID lockdown for GATE 2021, but was not
+                able to crack it.
+              </p>
+              <p class="text-red-300 mt-2">
+                Joined Course Hero in November 2021 as a Subject Matter Expert
+                (SME).
+              </p>
+              <p class="text-gray-400 mt-2">Started preparing for GATE 2022.</p>
             </div>
-        </div>
+          </div>
 
-        <!-- 2022 -->
-        <div class="relative pl-24 mb-16">
-            <div class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
+          <!-- 2022 -->
+          <div class="relative pl-24 mb-16">
+            <div
+              class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+            ></div>
             <h3 class="text-3xl text-red-500 font-bold mb-2">2022</h3>
             <div class="card-retro p-5 text-[19px] leading-relaxed">
-                <p class="text-green-400">Qualified GATE 2022, but the rank was not good.</p>
-                <p class="text-gray-400 mt-2">Continued working as an SME at Course Hero while preparing for GATE for the last time.</p>
+              <p class="text-green-400">
+                Qualified GATE 2022, but the rank was not good.
+              </p>
+              <p class="text-gray-400 mt-2">
+                Continued working as an SME at Course Hero while preparing for
+                GATE for the last time.
+              </p>
             </div>
-        </div>
+          </div>
 
-        <!-- 2023 -->
-        <div class="relative pl-24 mb-16">
-            <div class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
+          <!-- 2023 -->
+          <div class="relative pl-24 mb-16">
+            <div
+              class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+            ></div>
             <h3 class="text-3xl text-red-500 font-bold mb-2">2023</h3>
             <div class="card-retro p-5 text-[19px] leading-relaxed">
-                <p class="text-green-400">Qualified GATE 2023, but the rank was still not good. Finally dropped the plan for an MTech in IITs.</p>
-                <p class="text-gray-400 mt-2">Fired from Course Hero in September 2023 due to their strict policy.</p>
-                <p class="text-red-300 mt-2">Joined UrbanPro in October 2023 and remain with them currently as a freelance tutor.</p>
+              <p class="text-green-400">
+                Qualified GATE 2023, but the rank was still not good. Finally
+                dropped the plan for an MTech in IITs.
+              </p>
+              <p class="text-gray-400 mt-2">
+                Fired from Course Hero in September 2023 due to their strict
+                policy.
+              </p>
+              <p class="text-red-300 mt-2">
+                Joined UrbanPro in October 2023 and remain with them currently
+                as a freelance tutor.
+              </p>
             </div>
-        </div>
+          </div>
 
-        <!-- 2024 -->
-        <div class="relative pl-24 mb-16">
-            <div class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
+          <!-- 2024 -->
+          <div class="relative pl-24 mb-16">
+            <div
+              class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+            ></div>
             <h3 class="text-3xl text-red-500 font-bold mb-2">2024</h3>
             <div class="card-retro p-5 text-[19px] leading-relaxed">
-                <p class="text-red-300">Joined eClerx as a Support Analyst in December 2024.</p>
-                <p class="text-gray-400 mt-2">Continued working simultaneously as a freelance tutor with UrbanPro.</p>
+              <p class="text-red-300">
+                Joined eClerx as a Support Analyst in December 2024.
+              </p>
+              <p class="text-gray-400 mt-2">
+                Continued working simultaneously as a freelance tutor with
+                UrbanPro.
+              </p>
             </div>
-        </div>
+          </div>
 
-        <!-- 2025 -->
-        <div class="relative pl-24 mb-16">
-            <div class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"></div>
+          <!-- 2025 -->
+          <div class="relative pl-24 mb-16">
+            <div
+              class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black border-4 border-red-600 rounded-full z-20 shadow-[0_0_10px_#ff0033]"
+            ></div>
             <h3 class="text-3xl text-red-500 font-bold mb-2">2025</h3>
             <div class="card-retro p-5 text-[19px] leading-relaxed">
-                <p>Resigned from eClerx in September 2025.</p>
-                <p class="text-gray-400 mt-2">Continued working with UrbanPro.</p>
+              <p>Resigned from eClerx in September 2025.</p>
+              <p class="text-gray-400 mt-2">Continued working with UrbanPro.</p>
             </div>
-        </div>
+          </div>
 
-        <!-- 2026 -->
-        <div class="relative pl-24 pb-8">
-            <div class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-red-600 border-4 border-red-600 rounded-full animate-pulse z-20 shadow-[0_0_20px_#ff0033]"></div>
+          <!-- 2026 -->
+          <div class="relative pl-24 pb-8">
+            <div
+              class="absolute left-[36px] top-6 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-red-600 border-4 border-red-600 rounded-full animate-pulse z-20 shadow-[0_0_20px_#ff0033]"
+            ></div>
             <h3 class="text-3xl text-red-500 font-bold mb-2">2026</h3>
-            <div class="card-retro p-5 text-[19px] leading-relaxed border border-red-500">
-                <p class="text-green-400 font-bold">Joined Infotact as a Java Developer Intern in August 2026.</p>
-                <p class="mt-2">Still actively tutoring as a freelancer on UrbanPro while building my development career.</p>
+            <div
+              class="card-retro p-5 text-[19px] leading-relaxed border border-red-500"
+            >
+              <p class="text-green-400 font-bold">
+                Joined Infotact as a Java Developer Intern in August 2026.
+              </p>
+              <p class="mt-2">
+                Still actively tutoring as a freelancer on UrbanPro while
+                building my development career.
+              </p>
             </div>
-        </div>
+          </div>
 
-        <!-- Future Sweep Message -->
-        <div class="relative pl-24 pb-8">
-            <div class="text-red-800 font-mono tracking-widest text-sm animate-pulse">
-                [ STATUS: STILL LIVING ]<br>
-                > WORK IN PROGRESS FOR NEXT STUFF_
+          <!-- Future Sweep Message -->
+          <div class="relative pl-24 pb-8">
+            <div
+              class="text-red-800 font-mono tracking-widest text-sm animate-pulse"
+            >
+              [ STATUS: STILL LIVING ]<br />
+              > WORK IN PROGRESS FOR NEXT STUFF_
             </div>
+          </div>
         </div>
+      </section>
+
+      <!-- Contact Section (On Home Page) -->
+      <section id="contact" class="py-20 px-6 relative z-10">
+        <div
+          class="max-w-2xl mx-auto border border-red-900/50 bg-black/80 p-8 shadow-[0_0_30px_rgba(229,9,20,0.1)] relative overflow-hidden backdrop-blur-sm"
+        >
+          <!-- Decorative corner lines -->
+          <div
+            class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-red-600"
+          ></div>
+          <div
+            class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-red-600"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-red-600"
+          ></div>
+          <div
+            class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-red-600"
+          ></div>
+
+          <h2 class="text-3xl stranger-font text-center text-red-500 mb-8">
+            ESTABLISH CONNECTION
+          </h2>
+
+          <form id="transmission-form" class="space-y-6 font-mono">
+            <div>
+              <label class="block text-red-500 mb-2">> IDENTIFY YOURSELF</label>
+              <input
+                type="text"
+                id="sender-name"
+                required
+                class="w-full bg-gray-900 border border-red-900/50 p-3 text-gray-300 focus:outline-none focus:border-red-500 focus:shadow-[0_0_10px_#ff0033]"
+                placeholder="NAME"
+              />
+            </div>
+            <div>
+              <!-- We keep this for the aesthetic, even though their email app will provide their actual sender address -->
+              <label class="block text-red-500 mb-2">> FREQUENCY (EMAIL)</label>
+              <input
+                type="email"
+                id="sender-email"
+                required
+                class="w-full bg-gray-900 border border-red-900/50 p-3 text-gray-300 focus:outline-none focus:border-red-500 focus:shadow-[0_0_10px_#ff0033]"
+                placeholder="EMAIL@DOMAIN.COM"
+              />
+            </div>
+            <div>
+              <label class="block text-red-500 mb-2"
+                >> TRANSMISSION (MESSAGE)</label
+              >
+              <textarea
+                id="sender-message"
+                rows="4"
+                required
+                class="w-full bg-gray-900 border border-red-900/50 p-3 text-gray-300 focus:outline-none focus:border-red-500 focus:shadow-[0_0_10px_#ff0033]"
+                placeholder="ENTER MESSAGE..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-red-700 hover:bg-red-600 text-black font-bold py-3 transition-all duration-300"
+            >
+              SEND TRANSMISSION <span class="cursor-blink"></span>
+            </button>
+          </form>
+
+          <div class="mt-12 flex flex-col items-center w-full">
+            <!-- Social Icons Group -->
+            <!-- Links Group (Bulletproof Inline SVGs) -->
+            <div class="flex justify-center gap-6">
+              <!-- GitHub -->
+              <a
+                href="https://github.com/sameervhatkar"
+                target="_blank"
+                class="contact-node text-gray-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-8 h-8"
+                >
+                  <path
+                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-3.8 5.5 5.5 0 0 0-.2-3.7s-1.2-.5-3.9 2.5a13.2 13.2 0 0 0-7 0C6.2 1.5 5 2 5 2a5.5 5.5 0 0 0-.2 3.7A5.5 5.5 0 0 0 3 9.5c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"
+                  ></path>
+                </svg>
+              </a>
+
+              <!-- LinkedIn -->
+              <a
+                href="https://www.linkedin.com/in/sameer-vhatkar/"
+                target="_blank"
+                class="contact-node text-gray-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-8 h-8"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  ></path>
+                  <rect width="4" height="12" x="2" y="9"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+
+              <!-- LeetCode (Code Icon) -->
+              <a
+                href="https://leetcode.com/u/sameervhatkar/"
+                target="_blank"
+                class="contact-node text-gray-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-8 h-8"
+                >
+                  <path d="m18 16 4-4-4-4" />
+                  <path d="m6 8-4 4 4 4" />
+                  <path d="m14.5 4-5 16" />
+                </svg>
+              </a>
+
+              <!-- WhatsApp (Message Icon) -->
+              <a
+                href="https://wa.me/918850442961"
+                target="_blank"
+                class="contact-node text-gray-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="w-8 h-8"
+                >
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- WhatsApp Text -->
+            <div
+              class="mt-4 text-gray-600 text-sm font-mono tracking-widest text-center"
+            >
+              WHATSAPP: +91 8850442961
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-</section>
-
-
-
-                <!-- Contact Section (On Home Page) -->
-                <section id="contact" class="py-20 px-6 relative z-10">
-                    <div class="max-w-2xl mx-auto border border-red-900/50 bg-black/80 p-8 shadow-[0_0_30px_rgba(229,9,20,0.1)] relative overflow-hidden backdrop-blur-sm">
-                        <!-- Decorative corner lines -->
-                        <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-red-600"></div>
-                        <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-red-600"></div>
-                        <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-red-600"></div>
-                        <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-red-600"></div>
-
-                        <h2 class="text-3xl stranger-font text-center text-red-500 mb-8">ESTABLISH CONNECTION</h2>
-
-                        <form class="space-y-6 font-mono" onsubmit="event.preventDefault(); alert('Message transmission simulated.');">
-                            <div>
-                                <label class="block text-red-500 mb-2">> IDENTIFY YOURSELF</label>
-                                <input type="text" class="w-full bg-gray-900 border border-red-900/50 p-3 text-gray-300 focus:outline-none focus:border-red-500 focus:shadow-[0_0_10px_#ff0033]" placeholder="NAME">
-                            </div>
-                            <div>
-                                <label class="block text-red-500 mb-2">> FREQUENCY (EMAIL)</label>
-                                <input type="email" class="w-full bg-gray-900 border border-red-900/50 p-3 text-gray-300 focus:outline-none focus:border-red-500 focus:shadow-[0_0_10px_#ff0033]" placeholder="EMAIL@DOMAIN.COM">
-                            </div>
-                            <div>
-                                <label class="block text-red-500 mb-2">> TRANSMISSION (MESSAGE)</label>
-                                <textarea rows="4" class="w-full bg-gray-900 border border-red-900/50 p-3 text-gray-300 focus:outline-none focus:border-red-500 focus:shadow-[0_0_10px_#ff0033]" placeholder="ENTER MESSAGE..."></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-red-700 hover:bg-red-600 text-black font-bold py-3 transition-all duration-300">
-                                SEND TRANSMISSION <span class="cursor-blink"></span>
-                            </button>
-                        </form>
-
-                        <div class="mt-12 flex flex-col items-center w-full">
-                            <!-- Social Icons Group -->
-                            <!-- Links Group (Bulletproof Inline SVGs) -->
-                            <div class="flex justify-center gap-6">
-                                <!-- GitHub -->
-                                <a href="https://github.com/sameervhatkar" target="_blank" class="contact-node text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
-                                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-3.8 5.5 5.5 0 0 0-.2-3.7s-1.2-.5-3.9 2.5a13.2 13.2 0 0 0-7 0C6.2 1.5 5 2 5 2a5.5 5.5 0 0 0-.2 3.7A5.5 5.5 0 0 0 3 9.5c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"></path>
-                                    </svg>
-                                </a>
-                                
-                                <!-- LinkedIn -->
-                                <a href="https://www.linkedin.com/in/sameer-vhatkar/" target="_blank" class="contact-node text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
-                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                        <rect width="4" height="12" x="2" y="9"></rect>
-                                        <circle cx="4" cy="4" r="2"></circle>
-                                    </svg>
-                                </a>
-                                
-                                <!-- LeetCode (Code Icon) -->
-                                <a href="https://leetcode.com/u/sameervhatkar/" target="_blank" class="contact-node text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
-                                        <path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>
-                                    </svg>
-                                </a>
-                                
-                                <!-- WhatsApp (Message Icon) -->
-                                <a href="https://wa.me/918850442961" target="_blank" class="contact-node text-gray-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
-                                        <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                                                        
-                            <!-- WhatsApp Text -->
-                            <div class="mt-4 text-gray-600 text-sm font-mono tracking-widest text-center">
-                                WHATSAPP: +91 8850442961
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
 
     <!-- === VIEW: PROJECTS === -->
     <div id="view-projects" class="page-view pt-24 min-h-screen">
-        <div class="max-w-7xl mx-auto px-6 mb-8">
-             <button onclick="showView('home')" class="flex items-center text-red-500 hover:text-white transition-colors mb-6">
-                <i data-lucide="arrow-left" class="w-6 h-6 mr-2"></i> RETURN TO HOME
-            </button>
-            <h2 class="text-5xl stranger-font text-red-500 glow-text-filled mb-4">SYSTEM ARCHIVES</h2>
-            <p class="text-xl text-gray-400 border-b border-red-900/30 pb-4">CLICK A FILE TO OPEN DETAILS</p>
-        </div>
+      <div class="max-w-7xl mx-auto px-6 mb-8">
+        <button
+          onclick="showView('home')"
+          class="flex items-center text-red-500 hover:text-white transition-colors mb-6"
+        >
+          <i data-lucide="arrow-left" class="w-6 h-6 mr-2"></i> RETURN TO HOME
+        </button>
+        <h2 class="text-5xl stranger-font text-red-500 glow-text-filled mb-4">
+          SYSTEM ARCHIVES
+        </h2>
+        <p class="text-xl text-gray-400 border-b border-red-900/30 pb-4">
+          CLICK A FILE TO OPEN DETAILS
+        </p>
+      </div>
 
-        <section class="pb-20 px-6 max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- Project 1: HeapVortex -->
-                    <div class="card-retro p-6 rounded-lg flex flex-col h-full group" onclick="openProject(0)">
-                        <div class="flex items-center mb-4">
-                            <i data-lucide="cpu" class="text-red-500 w-8 h-8 mr-3"></i>
-                            <h3 class="text-2xl font-bold group-hover:text-red-500 transition-colors">HeapVortex</h3>
-                        </div>
-                        <p class="text-gray-400 text-sm mb-4">Java | Spring Boot | Docker | Eclipse MAT</p>
-                        <div class="text-lg flex-grow space-y-2">
-                            <p>A JVM diagnostic application orchestrating automated heap dump analysis for 15,000+ memory objects.</p>
-                            <p class="text-red-400 text-sm mt-4 group-hover:underline">> ACCESS FILE DETAILS</p>
-                        </div>
-                    </div>
-                
-                <!-- Project 2 -->
-                <div class="card-retro p-6 rounded-lg flex flex-col h-full group" onclick="openProject(1)">
-                    <div class="flex items-center mb-4">
-                        <i data-lucide="shopping-cart" class="text-red-500 w-8 h-8 mr-3"></i>
-                        <h3 class="text-2xl font-bold group-hover:text-red-500 transition-colors">E-commerce Microservices</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">Java | Spring Boot | MySQL</p>
-                    <div class="text-lg flex-grow space-y-2">
-                        <p>A full-scale E-commerce backend system built using microservices architecture.</p>
-                        <p class="text-red-400 text-sm mt-4 group-hover:underline">> ACCESS FILE DETAILS</p>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="card-retro p-6 rounded-lg flex flex-col h-full group" onclick="openProject(2)">
-                    <div class="flex items-center mb-4">
-                        <i data-lucide="film" class="text-red-500 w-8 h-8 mr-3"></i>
-                        <h3 class="text-2xl font-bold group-hover:text-red-500 transition-colors">BookMyShow Backend</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">Java Spring Boot | RDBMS</p>
-                    <div class="text-lg flex-grow space-y-2">
-                        <p>Movie Ticket Booking System backend simulation with complex relationships.</p>
-                         <p class="text-red-400 text-sm mt-4 group-hover:underline">> ACCESS FILE DETAILS</p>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="card-retro p-6 rounded-lg flex flex-col h-full group" onclick="openProject(3)">
-                    <div class="flex items-center mb-4">
-                        <i data-lucide="server" class="text-red-500 w-8 h-8 mr-3"></i>
-                        <h3 class="text-2xl font-bold group-hover:text-red-500 transition-colors">Fake Store API Integration</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">RestTemplate | WebClient</p>
-                    <div class="text-lg flex-grow space-y-2">
-                        <p>A practical project fetching and handling external product data.</p>
-                         <p class="text-red-400 text-sm mt-4 group-hover:underline">> ACCESS FILE DETAILS</p>
-                    </div>
-                </div>
+      <section class="pb-20 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1: HeapVortex -->
+          <div
+            class="card-retro p-6 rounded-lg flex flex-col h-full group"
+            onclick="openProject(0)"
+          >
+            <div class="flex items-center mb-4">
+              <i data-lucide="cpu" class="text-red-500 w-8 h-8 mr-3"></i>
+              <h3
+                class="text-2xl font-bold group-hover:text-red-500 transition-colors"
+              >
+                HeapVortex
+              </h3>
             </div>
-        </section>
-        
-        <div class="max-w-4xl mx-auto px-6 pb-20 text-center">
-             <div class="border border-red-900/50 bg-black/50 p-8 rounded">
-                 <p class="text-gray-300 mb-4">WANT TO SEE THE CODE IN ACTION?</p>
-                 <button onclick="showView('youtube')" class="px-6 py-2 bg-red-800 hover:bg-red-700 text-white font-bold transition-colors">
-                     VISIT ALGOXPLORATION TERMINAL
-                 </button>
-             </div>
+            <p class="text-gray-400 text-sm mb-4">
+              Java | Spring Boot | Docker | Eclipse MAT
+            </p>
+            <div class="text-lg flex-grow space-y-2">
+              <p>
+                A JVM diagnostic application orchestrating automated heap dump
+                analysis for 15,000+ memory objects.
+              </p>
+              <p class="text-red-400 text-sm mt-4 group-hover:underline">
+                > ACCESS FILE DETAILS
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="card-retro p-6 rounded-lg flex flex-col h-full group"
+            onclick="openProject(1)"
+          >
+            <div class="flex items-center mb-4">
+              <i
+                data-lucide="shopping-cart"
+                class="text-red-500 w-8 h-8 mr-3"
+              ></i>
+              <h3
+                class="text-2xl font-bold group-hover:text-red-500 transition-colors"
+              >
+                E-commerce Microservices
+              </h3>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">Java | Spring Boot | MySQL</p>
+            <div class="text-lg flex-grow space-y-2">
+              <p>
+                A full-scale E-commerce backend system built using microservices
+                architecture.
+              </p>
+              <p class="text-red-400 text-sm mt-4 group-hover:underline">
+                > ACCESS FILE DETAILS
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="card-retro p-6 rounded-lg flex flex-col h-full group"
+            onclick="openProject(2)"
+          >
+            <div class="flex items-center mb-4">
+              <i data-lucide="film" class="text-red-500 w-8 h-8 mr-3"></i>
+              <h3
+                class="text-2xl font-bold group-hover:text-red-500 transition-colors"
+              >
+                BookMyShow Backend
+              </h3>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">Java | Spring Boot | RDBMS</p>
+            <div class="text-lg flex-grow space-y-2">
+              <p>
+                Movie Ticket Booking System backend simulation with complex
+                relationships.
+              </p>
+              <p class="text-red-400 text-sm mt-4 group-hover:underline">
+                > ACCESS FILE DETAILS
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div
+            class="card-retro p-6 rounded-lg flex flex-col h-full group"
+            onclick="openProject(3)"
+          >
+            <div class="flex items-center mb-4">
+              <i data-lucide="server" class="text-red-500 w-8 h-8 mr-3"></i>
+              <h3
+                class="text-2xl font-bold group-hover:text-red-500 transition-colors"
+              >
+                Fake Store API Integration
+              </h3>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">
+              Java | Spring Boot | RestTemplate | WebClient
+            </p>
+            <div class="text-lg flex-grow space-y-2">
+              <p>
+                A practical project fetching and handling external product data.
+              </p>
+              <p class="text-red-400 text-sm mt-4 group-hover:underline">
+                > ACCESS FILE DETAILS
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <div class="text-center pb-20">
+        <a
+          href="https://github.com/sameervhatkar"
+          target="_blank"
+          class="inline-flex items-center px-8 py-4 border-2 border-red-600 text-red-500 hover:bg-red-600 hover:text-black transition-all duration-300 text-xl font-bold shadow-[0_0_15px_rgba(255,0,0,0.3)] bg-black/50"
+        >
+          VISIT GITHUB REPOSITORY
+          <i data-lucide="external-link" class="ml-3 w-6 h-6"></i>
+        </a>
+      </div>
     </div>
 
     <!-- === VIEW: PROJECT DETAILS (Dynamic) === -->
     <div id="view-project-details" class="page-view pt-24 min-h-screen">
-        <div class="max-w-7xl mx-auto px-6 mb-8">
-            <button onclick="showView('projects')" class="flex items-center text-red-500 hover:text-white transition-colors mb-6">
-                <i data-lucide="arrow-left" class="w-6 h-6 mr-2"></i> RETURN TO ARCHIVES
-            </button>
-            <h2 id="detail-title" class="text-4xl md:text-5xl stranger-font text-red-500 glow-text-filled mb-4">PROJECT TITLE</h2>
-            <p id="detail-subtitle" class="text-xl text-gray-400 border-b border-red-900/30 pb-4">SUBTITLE</p>
+      <div class="max-w-7xl mx-auto px-6 mb-8">
+        <button
+          onclick="showView('projects')"
+          class="flex items-center text-red-500 hover:text-white transition-colors mb-6"
+        >
+          <i data-lucide="arrow-left" class="w-6 h-6 mr-2"></i> RETURN TO
+          ARCHIVES
+        </button>
+        <h2
+          id="detail-title"
+          class="text-4xl md:text-5xl stranger-font text-red-500 glow-text-filled mb-4"
+        >
+          PROJECT TITLE
+        </h2>
+        <p
+          id="detail-subtitle"
+          class="text-xl text-gray-400 border-b border-red-900/30 pb-4"
+        >
+          SUBTITLE
+        </p>
+      </div>
+
+      <div
+        class="max-w-7xl mx-auto px-6 pb-20 grid grid-cols-1 lg:grid-cols-3 gap-8"
+      >
+        <!-- Left: Main Details -->
+        <div class="lg:col-span-2 space-y-8">
+          <div class="card-retro p-8 rounded-lg cursor-default">
+            <h3
+              class="text-2xl text-red-400 mb-4 border-b border-red-900/50 inline-block"
+            >
+              SYSTEM OVERVIEW
+            </h3>
+            <div
+              id="detail-description"
+              class="text-lg text-gray-300 space-y-4 leading-relaxed"
+            >
+              <!-- Content populated by JS -->
+            </div>
+          </div>
+
+          <div class="card-retro p-8 rounded-lg cursor-default">
+            <h3
+              class="text-2xl text-red-400 mb-4 border-b border-red-900/50 inline-block"
+            >
+              TECHNICAL ARCHITECTURE
+            </h3>
+            <ul
+              id="detail-features"
+              class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300"
+            >
+              <!-- Content populated by JS -->
+            </ul>
+          </div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-6 pb-20 grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Left: Main Details -->
-            <div class="lg:col-span-2 space-y-8">
-                <div class="card-retro p-8 rounded-lg cursor-default">
-                    <h3 class="text-2xl text-red-400 mb-4 border-b border-red-900/50 inline-block">SYSTEM OVERVIEW</h3>
-                    <div id="detail-description" class="text-lg text-gray-300 space-y-4 leading-relaxed">
-                        <!-- Content populated by JS -->
-                    </div>
-                </div>
-                
-                <div class="card-retro p-8 rounded-lg cursor-default">
-                    <h3 class="text-2xl text-red-400 mb-4 border-b border-red-900/50 inline-block">TECHNICAL ARCHITECTURE</h3>
-                    <ul id="detail-features" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
-                         <!-- Content populated by JS -->
-                    </ul>
-                </div>
+        <!-- Right: Sidebar/GitHub Link -->
+        <div class="lg:col-span-1">
+          <div
+            class="card-retro p-6 rounded-lg border-red-600 border sticky top-24 cursor-default"
+          >
+            <h3 class="text-xl text-white mb-4 bg-red-900/50 p-2 text-center">
+              REPOSITORY ACCESS
+            </h3>
+            <div class="flex justify-center mb-6">
+              <i data-lucide="github" class="w-20 h-20 text-gray-400"></i>
             </div>
-
-            <!-- Right: Sidebar/GitHub Link -->
-            <div class="lg:col-span-1">
-                <div class="card-retro p-6 rounded-lg border-red-600 border sticky top-24 cursor-default">
-                    <h3 class="text-xl text-white mb-4 bg-red-900/50 p-2 text-center">REPOSITORY ACCESS</h3>
-                    <div class="flex justify-center mb-6">
-                        <i data-lucide="github" class="w-20 h-20 text-gray-400"></i>
-                    </div>
-                    <p class="text-center text-gray-400 text-sm mb-6">
-                        Source code is classified. Access granted via GitHub secure channel.
-                    </p>
-                    <a id="detail-github" href="#" target="_blank" class="block w-full text-center py-3 bg-red-600 hover:bg-red-500 text-black font-bold transition-all shadow-[0_0_15px_rgba(255,0,0,0.4)]">
-                        OPEN REPOSITORY <span class="animate-pulse">_</span>
-                    </a>
-                    <div class="mt-4 pt-4 border-t border-gray-800 text-xs text-center text-gray-500 font-mono">
-                        STATUS: <span class="text-green-500">COMPLETED</span><br>
-                        AUTHOR: SAMEER VHATKAR
-                    </div>
-                </div>
+            <p class="text-center text-gray-400 text-sm mb-6">
+              Source code is classified. Access granted via GitHub secure
+              channel.
+            </p>
+            <a
+              id="detail-github"
+              href="#"
+              target="_blank"
+              class="block w-full text-center py-3 bg-red-600 hover:bg-red-500 text-black font-bold transition-all shadow-[0_0_15px_rgba(255,0,0,0.4)]"
+            >
+              OPEN REPOSITORY <span class="animate-pulse">_</span>
+            </a>
+            <div
+              class="mt-4 pt-4 border-t border-gray-800 text-xs text-center text-gray-500 font-mono"
+            >
+              STATUS: <span class="text-green-500">COMPLETED</span><br />
+              AUTHOR: SAMEER VHATKAR
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- === VIEW: YOUTUBE === -->
     <div id="view-youtube" class="page-view pt-24 min-h-screen">
-         <div class="max-w-6xl mx-auto px-6 mb-8">
-            <button onclick="showView('home')" class="flex items-center text-red-500 hover:text-white transition-colors mb-6">
-                <i data-lucide="arrow-left" class="w-6 h-6 mr-2"></i> RETURN TO HOME
-            </button>
-            <h2 class="text-5xl stranger-font text-red-500 glow-text-filled mb-4 text-center">ALGOXPLORATION</h2>
-            <p class="text-center text-gray-400 mb-12 uppercase tracking-widest">Broadcast Signal Received...</p>
+      <div class="max-w-6xl mx-auto px-6 mb-8">
+        <button
+          onclick="showView('home')"
+          class="flex items-center text-red-500 hover:text-white transition-colors mb-6"
+        >
+          <i data-lucide="arrow-left" class="w-6 h-6 mr-2"></i> RETURN TO HOME
+        </button>
+        <h2
+          class="text-5xl stranger-font text-red-500 glow-text-filled mb-4 text-center"
+        >
+          ALGOXPLORATION
+        </h2>
+        <p class="text-center text-gray-400 mb-12 uppercase tracking-widest">
+          Broadcast Signal Received...
+        </p>
+      </div>
+
+      <section class="pb-20 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Video Container 1 -->
+          <!-- Video Container 1: DSA Playlist (HD Facade via API) -->
+          <div
+            class="border-4 border-gray-800 rounded-lg overflow-hidden relative shadow-[0_0_20px_rgba(255,0,0,0.2)]"
+          >
+            <div
+              class="absolute inset-0 border-2 border-red-900/50 pointer-events-none z-30 rounded-lg"
+            ></div>
+            <div
+              id="playlist-video"
+              class="bg-black aspect-video flex items-center justify-center relative group"
+            >
+              <!-- Initial Loading Text -->
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-gray-600"
+              >
+                <i
+                  data-lucide="youtube"
+                  class="w-16 h-16 text-red-700 mb-2"
+                ></i>
+                <span>FEATURED PLAYLIST</span>
+                <span class="text-xs mt-2 text-red-900 animate-pulse"
+                  >FETCHING HD THUMBNAIL...</span
+                >
+              </div>
+            </div>
+            <div
+              class="bg-gray-900 p-3 flex justify-between items-center font-mono text-sm border-t border-gray-700 relative z-10"
+            >
+              <span class="text-red-500">PLAYLIST: DSA CORE</span>
+              <span class="text-green-500 animate-pulse">SYNCED</span>
+            </div>
+          </div>
+
+          <!-- Video Container 2: Latest Upload (API Target) -->
+          <div
+            id="latest-wrapper"
+            class="border-4 border-gray-800 rounded-lg overflow-hidden relative shadow-[0_0_20px_rgba(255,0,0,0.2)]"
+          >
+            <div
+              class="absolute inset-0 border-2 border-red-900/50 pointer-events-none z-30 rounded-lg"
+            ></div>
+            <div
+              id="latest-video"
+              class="bg-black aspect-video flex items-center justify-center relative group"
+            >
+              <!-- Initial Loading Text -->
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-gray-600"
+              >
+                <i
+                  data-lucide="play-circle"
+                  class="w-16 h-16 text-red-700 mb-2"
+                ></i>
+                <span>LATEST UPLOAD</span>
+                <span class="text-xs mt-2 text-red-900 animate-pulse"
+                  >FETCHING HD THUMBNAIL...</span
+                >
+              </div>
+            </div>
+            <div
+              class="bg-gray-900 p-3 flex justify-between items-center font-mono text-sm border-t border-gray-700 relative z-10"
+            >
+              <span class="text-red-500">STATUS: LIVE FETCH</span>
+              <span class="text-green-500 animate-pulse">SYNCED</span>
+            </div>
+          </div>
         </div>
 
-        <section class="pb-20 px-6 max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Video Container 1 -->
-                <div class="border-4 border-gray-800 rounded-lg overflow-hidden relative shadow-[0_0_20px_rgba(255,0,0,0.2)]">
-                    <div class="absolute inset-0 border-2 border-red-900/50 pointer-events-none z-10 rounded-lg"></div>
-                    <div class="bg-black aspect-video flex items-center justify-center relative group">
-                        <!-- Placeholder for YouTube Embed -->
-                        <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-600">
-                             <i data-lucide="youtube" class="w-16 h-16 text-red-700 mb-2"></i>
-                             <span>FEATURED CONTENT</span>
-                             <span class="text-xs mt-2 text-red-900 animate-pulse">NO SIGNAL</span>
-                        </div>
-                    </div>
-                    <div class="bg-gray-900 p-3 flex justify-between items-center font-mono text-sm border-t border-gray-700">
-                        <span class="text-red-500">CHANNEL: ALGOXPLORATION</span>
-                        <span class="text-gray-500">REC ●</span>
-                    </div>
-                </div>
+        <div class="text-center mt-12">
+          <a
+            href="https://www.youtube.com/@AlgoXploration"
+            target="_blank"
+            class="inline-flex items-center px-8 py-4 border-2 border-red-600 text-red-500 hover:bg-red-600 hover:text-white transition-all duration-300 text-xl font-bold shadow-[0_0_15px_rgba(255,0,0,0.3)]"
+          >
+            VISIT OFFICIAL CHANNEL
+            <i data-lucide="external-link" class="ml-3 w-6 h-6"></i>
+          </a>
+        </div>
 
-                <!-- Video Container 2 -->
-                <div class="border-4 border-gray-800 rounded-lg overflow-hidden relative shadow-[0_0_20px_rgba(255,0,0,0.2)]">
-                    <div class="absolute inset-0 border-2 border-red-900/50 pointer-events-none z-10 rounded-lg"></div>
-                    <div class="bg-black aspect-video flex items-center justify-center relative group">
-                         <!-- Placeholder -->
-                        <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-600">
-                             <i data-lucide="play-circle" class="w-16 h-16 text-red-700 mb-2"></i>
-                             <span>LATEST UPLOAD</span>
-                             <span class="text-xs mt-2 text-red-900 animate-pulse">TUNING...</span>
-                        </div>
-                    </div>
-                    <div class="bg-gray-900 p-3 flex justify-between items-center font-mono text-sm border-t border-gray-700">
-                        <span class="text-red-500">TOPIC: DSA</span>
-                        <span class="text-gray-500">LIVE</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="https://www.youtube.com/@AlgoXploration" target="_blank" class="inline-flex items-center px-8 py-4 border-2 border-red-600 text-red-500 hover:bg-red-600 hover:text-white transition-all duration-300 text-xl font-bold shadow-[0_0_15px_rgba(255,0,0,0.3)]">
-                    VISIT OFFICIAL CHANNEL <i data-lucide="external-link" class="ml-3 w-6 h-6"></i>
-                </a>
-            </div>
-
-            <!-- Stats or extra info placeholder -->
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-center text-gray-500 font-mono">
-                 <div class="p-4 bg-gray-900/50 border border-gray-800">
-                     <div class="text-2xl text-red-500">DSA</div>
-                     <div class="text-sm">FOCUS AREA</div>
-                 </div>
-                 <div class="p-4 bg-gray-900/50 border border-gray-800">
-                     <div class="text-2xl text-red-500">CORE CS</div>
-                     <div class="text-sm">SUBJECTS</div>
-                 </div>
-                 <div class="p-4 bg-gray-900/50 border border-gray-800">
-                     <div class="text-2xl text-red-500">WEEKLY</div>
-                     <div class="text-sm">UPLOADS</div>
-                 </div>
-            </div>
-        </section>
+        <!-- Stats or extra info placeholder -->
+        <div
+          class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-center text-gray-500 font-mono"
+        >
+          <div class="p-4 bg-gray-900/50 border border-gray-800">
+            <div class="text-2xl text-red-500">DSA</div>
+            <div class="text-sm">FOCUS AREA</div>
+          </div>
+          <div class="p-4 bg-gray-900/50 border border-gray-800">
+            <div class="text-2xl text-red-500">CORE CS</div>
+            <div class="text-sm">SUBJECTS</div>
+          </div>
+          <div class="p-4 bg-gray-900/50 border border-gray-800">
+            <div class="text-2xl text-red-500">WEEKLY</div>
+            <div class="text-sm">UPLOADS</div>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <footer class="text-center py-8 text-gray-600 text-sm border-t border-gray-900 bg-black z-50 relative">
-        <p>© 2026 SAMEER VHATKAR | ALGOXPLORATION</p>
+    <footer
+      class="text-center py-8 text-gray-600 text-sm border-t border-gray-900 bg-black z-50 relative"
+    >
+      <p>© 2026 SAMEER VHATKAR | ALGOXPLORATION</p>
     </footer>
-    <script src = "js/script.js"></script>
-</body>
+    <script src="js/script.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>

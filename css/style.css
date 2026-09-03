@@ -1,295 +1,352 @@
 @import "tailwindcss";
-        :root {
-            --neon-red: #ff0033;
-            --neon-dim: #9e0020;
-            --bg-dark: #050508;
-            --crt-scanline: rgba(18, 16, 16, 0.3);
-        }
+:root {
+  --neon-red: #ff0033;
+  --neon-dim: #9e0020;
+  --bg-dark: #050508;
+  --crt-scanline: rgba(18, 16, 16, 0.3);
+}
 
-        body {
-            background-color: var(--bg-dark);
-            color: #dcdcdc;
-            font-family: 'VT323', monospace;
-            overflow-x: hidden;
-            cursor: crosshair;
-        }
+body {
+  background-color: var(--bg-dark);
+  color: #dcdcdc;
+  font-family: "VT323", monospace;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
 
-        /* --- TYPOGRAPHY --- */
-        .stranger-font {
-            font-family: 'Merriweather', serif;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            -webkit-text-stroke: 0.5px #000;
-        }
+/* --- TYPOGRAPHY --- */
+.stranger-font {
+  font-family: "Merriweather", serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  -webkit-text-stroke: 0.5px #000;
+}
 
-        .glow-text {
-            color: transparent;
-            -webkit-text-stroke: 2px var(--neon-red);
-            text-shadow: 
-                0 0 5px var(--neon-red),
-                0 0 10px var(--neon-red),
-                0 0 20px var(--neon-dim);
-            animation: pulse-glow 3s infinite alternate;
-        }
+.glow-text {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--neon-red);
+  text-shadow:
+    0 0 5px var(--neon-red),
+    0 0 10px var(--neon-red),
+    0 0 20px var(--neon-dim);
+  animation: pulse-glow 3s infinite alternate;
+}
 
-        .glow-text-filled {
-            color: var(--neon-red);
-            text-shadow: 0 0 10px var(--neon-red);
-        }
-        
-        /* --- STRANGER THINGS CUSTOM LAYOUT --- */
-        .st-logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            font-family: 'Merriweather', serif;
-            font-weight: 900;
-            transform: scale(0.9);
-            line-height: 1;
-        }
+.glow-text-filled {
+  color: var(--neon-red);
+  text-shadow: 0 0 10px var(--neon-red);
+}
 
-        @media (min-width: 768px) {
-            .st-logo-container { transform: scale(1.3); }
-        }
+/* --- STRANGER THINGS CUSTOM LAYOUT --- */
+.st-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  font-family: "Merriweather", serif;
+  font-weight: 900;
+  transform: scale(0.9);
+  line-height: 1;
+}
 
-        /* Top Row Group */
-        .st-top-row {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-        }
+@media (min-width: 768px) {
+  .st-logo-container {
+    transform: scale(1.3);
+  }
+}
 
-        /* Side Groups (S + Line, R + Line) */
-        .st-side-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 -0.2rem; /* Tighten to center */
-        }
+/* Top Row Group */
+.st-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
 
-        /* The Giant Bookends: S and R */
-        .st-bookend {
-            font-size: 7rem;
-            color: black; /* Hollow */
-            -webkit-text-stroke: 3px var(--neon-red); /* Neon Red Border */
-            text-shadow: 
-                100 0 100px var(--neon-red), 
-                0 0 100px var(--neon-red); /* Red Glow */
-            z-index: 10;
-            line-height: 0.7;
-            transform: translateY(0.5rem);
-        }
+/* Side Groups (S + Line, R + Line) */
+.st-side-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 -0.2rem; /* Tighten to center */
+}
 
-        /* The separate bottom lines for S and R */
-        .st-bar-side {
-            width: 100%;
-            height: 6px;
-            background: black;
-            box-shadow: 0 0 15px var(--neon-red);
-            border: 1px solid var(--neon-red);
-            margin-top: 20px;
-        }
+/* The Giant Bookends: S and R */
+.st-bookend {
+  font-size: 7rem;
+  color: black; /* Hollow */
+  -webkit-text-stroke: 3px var(--neon-red); /* Neon Red Border */
+  text-shadow:
+    100 0 100px var(--neon-red),
+    0 0 100px var(--neon-red); /* Red Glow */
+  z-index: 10;
+  line-height: 0.7;
+  transform: translateY(0.5rem);
+}
 
-        /* The Middle Stack (Top Bar + AMEE) */
-        .st-stack-top {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            margin: 0 0.2rem;
-            position: relative;
-        }
+/* The separate bottom lines for S and R */
+.st-bar-side {
+  width: 100%;
+  height: 6px;
+  background: black;
+  box-shadow: 0 0 15px var(--neon-red);
+  border: 1px solid var(--neon-red);
+  margin-top: 20px;
+}
 
-        /* Top Bar */
-        .st-bar-top {
-            width: 160%; 
-            height: 6px;
-            background: black;
-            box-shadow: 0 0 15px var(--neon-red);
-            border: 1px solid var(--neon-red);
-            position: relative; 
-            top: -10px;
-        }
+/* The Middle Stack (Top Bar + AMEE) */
+.st-stack-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 0.2rem;
+  position: relative;
+}
 
-        /* AMEE */
-        .st-amee {
-            font-size: 6rem;
-            color: black; /* Hollow */
-            -webkit-text-stroke: 2.5px var(--neon-red); /* Neon Red Border */
-            text-shadow: 
-                100 0 100px var(--neon-red), 
-                0 0 100px var(--neon-red); /* Red Glow */
-            letter-spacing: -2px;
-            margin: 0;
-            z-index: 5;
-            line-height: 0.8;
-        }
+/* Top Bar */
+.st-bar-top {
+  width: 160%;
+  height: 6px;
+  background: black;
+  box-shadow: 0 0 15px var(--neon-red);
+  border: 1px solid var(--neon-red);
+  position: relative;
+  top: -10px;
+}
 
-        /* VHATKAR (Bottom Row) */
-        .st-vhatkar {
-            font-size: 3rem;
-            color: black; /* Hollow */
-            -webkit-text-stroke: 1.5px var(--neon-red); /* Neon Red Border */
-            text-shadow: 
-                100 0 100px var(--neon-red), 
-                0 0 100px var(--neon-red); /* Red Glow */
-            letter-spacing: 0.35rem;
-            margin-top: -10px; /* <--- CHANGED THIS TO NEGATIVE */
-        }
+/* AMEE */
+.st-amee {
+  font-size: 6rem;
+  color: black; /* Hollow */
+  -webkit-text-stroke: 2.5px var(--neon-red); /* Neon Red Border */
+  text-shadow:
+    100 0 100px var(--neon-red),
+    0 0 100px var(--neon-red); /* Red Glow */
+  letter-spacing: -2px;
+  margin: 0;
+  z-index: 5;
+  line-height: 0.8;
+}
 
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            .st-bookend { font-size: 5rem; -webkit-text-stroke: 2px var(--neon-red); }
-            .st-amee { font-size: 3rem; -webkit-text-stroke: 1.5px var(--neon-red); }
-            .st-vhatkar { font-size: 1.5rem; -webkit-text-stroke: 1px var(--neon-red); letter-spacing: 0.2rem; }
-            .st-bar-top { height: 3px; top: -2px; }
-            .st-bar-side { height: 3px; }
-        }
+/* VHATKAR (Bottom Row) */
+.st-vhatkar {
+  font-size: 3rem;
+  color: black; /* Hollow */
+  -webkit-text-stroke: 1.5px var(--neon-red); /* Neon Red Border */
+  text-shadow:
+    100 0 100px var(--neon-red),
+    0 0 100px var(--neon-red); /* Red Glow */
+  letter-spacing: 0.35rem;
+  margin-top: -10px; /* <--- CHANGED THIS TO NEGATIVE */
+}
 
-        /* --- CRT & ATMOSPHERE EFFECTS --- */
-        .crt-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(
-                rgba(18, 16, 16, 0) 50%, 
-                rgba(0, 0, 0, 0.25) 50%
-            ), linear-gradient(
-                90deg, 
-                rgba(255, 0, 0, 0.06), 
-                rgba(0, 255, 0, 0.02), 
-                rgba(0, 0, 255, 0.06)
-            );
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-            z-index: 50;
-        }
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .st-bookend {
+    font-size: 5rem;
+    -webkit-text-stroke: 2px var(--neon-red);
+  }
+  .st-amee {
+    font-size: 3rem;
+    -webkit-text-stroke: 1.5px var(--neon-red);
+  }
+  .st-vhatkar {
+    font-size: 1.5rem;
+    -webkit-text-stroke: 1px var(--neon-red);
+    letter-spacing: 0.2rem;
+  }
+  .st-bar-top {
+    height: 3px;
+    top: -2px;
+  }
+  .st-bar-side {
+    height: 3px;
+  }
+}
 
-        .vignette {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.9) 100%);
-            z-index: 40;
-            pointer-events: none;
-        }
+/* --- CRT & ATMOSPHERE EFFECTS --- */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  background-size:
+    100% 2px,
+    3px 100%;
+  pointer-events: none;
+  z-index: 50;
+}
 
-        /* --- ANIMATIONS --- */
-        @keyframes pulse-glow {
-            0% { text-shadow: 0 0 4px var(--neon-red); }
-            100% { text-shadow: 0 0 15px var(--neon-red), 0 0 30px var(--neon-red); }
-        }
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  z-index: 40;
+  pointer-events: none;
+}
 
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.5; }
-        }
+/* --- ANIMATIONS --- */
+@keyframes pulse-glow {
+  0% {
+    text-shadow: 0 0 4px var(--neon-red);
+  }
+  100% {
+    text-shadow:
+      0 0 15px var(--neon-red),
+      0 0 30px var(--neon-red);
+  }
+}
 
-        .flicker-slow {
-            animation: flicker 4s infinite;
-        }
+@keyframes flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.5;
+  }
+}
 
-        /* --- COMPONENTS --- */
-        .card-retro {
-            background: rgba(20, 20, 25, 0.8);
-            border: 1px solid #333;
-            box-shadow: 0 0 5px rgba(255, 0, 51, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer; /* Added cursor pointer */
-        }
+.flicker-slow {
+  animation: flicker 4s infinite;
+}
 
-        .card-retro:hover {
-            border-color: var(--neon-red);
-            box-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
-            transform: translateY(-2px);
-        }
+/* --- COMPONENTS --- */
+.card-retro {
+  background: rgba(20, 20, 25, 0.8);
+  border: 1px solid #333;
+  box-shadow: 0 0 5px rgba(255, 0, 51, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer; /* Added cursor pointer */
+}
 
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent, var(--neon-red), transparent);
-            box-shadow: 0 0 10px var(--neon-red);
-            z-index: 0;
-        }
+.card-retro:hover {
+  border-color: var(--neon-red);
+  box-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
+  transform: translateY(-2px);
+}
 
-        .timeline-node {
-            background: #000;
-            border: 2px solid var(--neon-red);
-            box-shadow: 0 0 10px var(--neon-red);
-        }
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--neon-red),
+    transparent
+  );
+  box-shadow: 0 0 10px var(--neon-red);
+  z-index: 0;
+}
 
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        .social-icon:hover {
-            color: var(--neon-red);
-            filter: drop-shadow(0 0 8px var(--neon-red));
-        }
+.timeline-node {
+  background: #000;
+  border: 2px solid var(--neon-red);
+  box-shadow: 0 0 10px var(--neon-red);
+}
 
-        .cursor-blink {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background-color: var(--neon-red);
-            animation: blink 1s step-end infinite;
-            vertical-align: text-bottom;
-        }
+.social-icon {
+  transition: all 0.3s ease;
+}
+.social-icon:hover {
+  color: var(--neon-red);
+  filter: drop-shadow(0 0 8px var(--neon-red));
+}
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
+.cursor-blink {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background-color: var(--neon-red);
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--neon-red);
-        }
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
 
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-        
-        /* View Switching Utility */
-        .page-view {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        .page-view.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .code-block {
-            background: #111;
-            border: 1px solid #333;
-            padding: 10px;
-            font-family: monospace;
-            color: #dcdcdc;
-            font-size: 0.9em;
-        }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-red);
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* View Switching Utility */
+.page-view {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.page-view.active {
+  display: block;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.code-block {
+  background: #111;
+  border: 1px solid #333;
+  padding: 10px;
+  font-family: monospace;
+  color: #dcdcdc;
+  font-size: 0.9em;
+}
