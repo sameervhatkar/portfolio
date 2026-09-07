@@ -1,6 +1,40 @@
 // Initialize Lucide Icons
 lucide.createIcons();
 
+document.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("bgm-audio");
+  const audioBtn = document.getElementById("audio-toggle");
+  const speakerIcon = document.getElementById("speaker-icon");
+
+  // 1. Make the volume a little bit lower (20%)
+  audio.volume = 0.4;
+  let isPlaying = true;
+
+  // 2. Force autoplay immediately on load (Netflix style)
+  audio
+    .play()
+    .then(() => {
+      speakerIcon.textContent = "🔊";
+    })
+    .catch(() => {
+      speakerIcon.textContent = "🔇";
+      isPlaying = false;
+    });
+
+  // 3. Mute/Unmute toggle logic
+  audioBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      audio.pause();
+      speakerIcon.textContent = "🔇";
+      isPlaying = false;
+    } else {
+      audio.play();
+      speakerIcon.textContent = "🔊";
+      isPlaying = true;
+    }
+  });
+});
+
 async function loadYouTubeVideos() {
   const latestContainer = document.getElementById("latest-video");
   const playlistContainer = document.getElementById("playlist-video");
